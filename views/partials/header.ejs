@@ -1,0 +1,82 @@
+<header class="app-header app-header--<%= meta.DEFAULT_LAYOUT_CLASS %>">
+  <p class="app-title">E-Drive</p>
+  <div class="app-header--menu">
+    <button class="menu-toggler--mobile">Menu</button>
+    <ul class="menu-container hide">
+      <a href="#"><li class="menu-link">Home</li></a>
+      <a href="#"><li class="menu-link">About</li></a>
+      <a href="#"><li class="menu-link">Login</li></a>
+    </ul>
+  </div>
+</header>
+
+<script>
+const menuToggler = document.querySelector('.menu-toggler--mobile')
+const menuContainer = document.querySelector('.menu-container')
+
+menuToggler.onclick = function() {
+  menuContainer.classList.toggle('hide')
+}
+</script>
+
+<style>
+  .app-header {
+    height: 60px;
+    background: darkblue;
+    padding: 0 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .app-title, .menu-link {
+    cursor: pointer;
+    color: white;
+    margin: 0;
+  }
+
+  .app-header--menu > .menu-container {
+    display: flex;
+    list-style: none;
+  }
+
+  .app-header--menu > .menu-toggler--mobile {
+    display: none;
+  }
+
+  .menu-link {
+    margin: 0 5px;
+  }
+
+  @media screen and (max-width: 320px) {
+    .app-header--menu > .menu-container:not(.hide) {
+      background: darkblue;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      top: 60px;
+      left: 0;
+      right: 0;
+    }
+
+    .app-header--menu > .menu-container.hide {
+      display: none;
+    }
+
+    .app-header--menu > .menu-toggler--mobile {
+      display: block;
+      border: 2px solid white;
+      background: transparent;
+      padding: 0.5em 1em 0.6em 1em;
+      color: white;
+    }
+
+    .menu-container li {
+      text-align: center;
+      padding: 1em 0;
+      margin: 0;
+    }
+  }
+</style>
