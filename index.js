@@ -1,7 +1,10 @@
 const expressLayouts = require("express-ejs-layouts")
 const express = require("express")
+const { join } = require("path")
 const app = express()
-const port = 1234
+const PORT = process.env.PORT || 1234
+
+app.use("/public", express.static(join(__dirname, "public")))
 
 app.set("view engine", "ejs")
 app.use(expressLayouts)
@@ -14,4 +17,9 @@ app.get("/", (req, res) => {
   res.render("index")
 })
 
-app.listen(port, () => console.log("serving"))
+app.listen(PORT, () =>
+  console.log(`
+  Application serving on http://localhost:${PORT}
+          ctrl + c to quit application
+`)
+)

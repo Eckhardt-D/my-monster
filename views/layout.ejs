@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name=description content="<%= meta.description %>">
+  <link rel="stylesheet" href="/public/styles.css">
   <title><%= meta.title %></title>
   <style>
     body {
@@ -17,5 +18,6 @@
 <body>
   <%- include('partials/header.ejs', { meta }) %>
   <%- body %>
+  <script src="/public/app.js"></script>
 </body>
 </html>
