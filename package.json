@@ -4,21 +4,24 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "serve": "concurrently \"node ./api\" \"node ./server\"",
-    "serve:client": "node ./server",
-    "serve:api": "node ./api",
-    "dev": "concurrently \"nodemon ./api\" \"nodemon ./server\"",
-    "dev:client": "nodemon ./server",
-    "dev:api": "nodemon ./api"
+    "serve": "cross-env NODE_ENV=production concurrently \"node ./api\" \"node ./server\"",
+    "serve:client": "cross-env NODE_ENV=production node ./server",
+    "serve:api": "cross-env NODE_ENV=production node ./api",
+    "dev": "cross-env NODE_ENV=development concurrently \"nodemon ./api\" \"nodemon ./server\"",
+    "dev:client": "cross-env NODE_ENV=development nodemon ./server",
+    "dev:api": "cross-env NODE_ENV=development nodemon ./api"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^4.1.2",
+    "cross-env": "^6.0.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
-    "nodemon": "^1.19.2"
+    "glob": "^7.1.4",
+    "nodemon": "^1.19.2",
+    "socket.io": "^2.3.0"
   }
 }

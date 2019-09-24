@@ -12,6 +12,16 @@
 <body>
   <%- include('partials/header.ejs', { meta }) %>
   <%- body %>
+  <script src="/public/scripts/socket.io.js"></script>
+  <script>
+    if(io) {
+      let socket = io('http://localhost:9000')
+      socket.on('save', () => {
+        location.reload()
+      })
+    }
+    </script>
   <script src="/public/app.js"></script>
 </body>
+
 </html>
