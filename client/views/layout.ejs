@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name=description content="<%= meta.description %>">
-  <style>@import url('/public/css/bootstrap-reboot.min.css');</style>
-  <link rel="stylesheet" href="/public/styles.css">
+  <link rel="stylesheet" href="/public/css/global.css">
   <title><%= meta.title %></title>
 </head>
-<body>
-  <%- include('partials/header.ejs', { meta }) %>
-  <%- body %>
-  <script src="/public/scripts/socket.io.js"></script>
-  <script>
-    if(io) {
-      let socket = io('http://localhost:9000')
-      socket.on('save', () => {
-        location.reload()
-      })
-    }
-    </script>
-  <script src="/public/app.js"></script>
-</body>
-
+  <body>
+    <%- include('partials/header.ejs', { meta }) %>
+    <%- body %>
+    <script src="/public/scripts/socket.io.js"></script>
+    <script>
+      if(io) {
+        try {
+          let socket = io('http://localhost:9000')
+          socket.on('save', () => {
+          location.reload()
+        })
+        } catch {}
+      }
+      </script>
+    <script type="module" src="/public/lib/index.js"></script>
+  </body>
 </html>

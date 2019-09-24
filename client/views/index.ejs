@@ -1,105 +1,74 @@
 <main class="container-fluid">
 
-  <div class="row my-5 py-4">
+  <div class="row jumbotron-background">
     <div class="col-12 mx-auto">
         <div class="site-jumbotron mx-auto">
           <h1 class="jumbotron-text">Get your favorite meal with MunchDrop</h1>
-          <p class="jumbotron-lead">MuchDrop is a Namibian web application 
+          <p class="jumbotron-lead my-3 mb-4">MunchDrop is a Namibian web application 
           where you can order any of your favourite restaurant's 
           food and have it delivered to you in no time.</p>
-          <button class="site-button">Get started</button>
+          <button to="/auth/login" class="site-button">Get started</button>
         </div>
     </div>
   </div>
 
+  <div class="row site-info py-3">
 
-  <div class="row site-info py-5">
-    <div class="col-md-6 col-lg-4">
+    <% for(card of state.cards) { %>
+    <div class="col-sm-6 col-lg-4 my-3 mx-auto">
       <div class="info-card">
         <div class="card-title">
-          <h5>Supports all file types</h5>
+          <h5><%= card.title %></h5>
         </div>
         <div class="card-body">
           <p class="card-text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, explicabo!
+            <%= card.text %>
           </p>
           <div class="card-actions">
-            <button class="site-button--outline">Learn More</button>
+            <button 
+              to="/about"
+              class="site-button--outline"
+            >Learn More</button>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="col-md-6 col-lg-4">
-        <div class="info-card">
-          <div class="card-title">
-            <h5>Supports all file types</h5>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, explicabo!
-            </p>
-            <div class="card-actions">
-              <button class="site-button--outline">Learn More</button>
-            </div>
-          </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4">
-        <div class="info-card">
-          <div class="card-title">
-            <h5>Supports all file types</h5>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, explicabo!
-            </p>
-            <div class="card-actions">
-              <button class="site-button--outline">Learn More</button>
-            </div>
-          </div>
-      </div>
-    </div>
+  <% } %>
 
   </div>
 </main>
 
+
 <style>
-  .site-jumbotron {
-    background: #f4f4f4;
-    border-radius: 5px;
-    padding: 1em;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
-    max-width: 600px;
-  }
+.jumbotron-background {
+  padding: 5em 0;
+  background: lightblue;
+}
 
-  .site-button, .site-button--outline {
-    background: coral;
-    color: white;
-    padding: .7em;
-    border-radius: 5px;
-    border-width: 0;
-  }
+.site-jumbotron {
+  background: #f4f4f4;
+  border-radius: 5px;
+  padding: 2em;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+}
 
-  .site-button--outline {
-    background: transparent;
-    color: black;
-    border: 2px solid coral;
-  }
+.jumbotron-text {
+  font-size: 1.8em;
+}
 
-  .site-info {
-    background: #f4f4f4;
-  }
+.site-info {
+  background: #f4f4f4;
+}
 
-  .info-card {
-    border: 1px solid rgba(10, 10, 110, 0.3);
-    background: white;
-    padding: 2em;
-  }
+.info-card {
+  border: 1px solid rgba(10, 10, 110, 0.3);
+  background: white;
+  padding: 2em;
+}
 
-  .info-card > .card-title {
-    font-size: 1.3em;
-    font-style: italic;
-  }
+.info-card > .card-title {
+  font-size: 1.3em;
+  font-style: italic;
+}
 </style>

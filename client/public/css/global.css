@@ -1,4 +1,5 @@
-@import url(./css/bootstrap-grid.min.css);
+@import url(./bootstrap-reboot.min.css);
+@import url(./bootstrap-grid.min.css);
 
 .app-header {
   height: 60px;
@@ -35,8 +36,31 @@
   font-weight: bolder;
 }
 
+.site-button,
+.site-button--outline {
+  background: coral;
+  color: white;
+  padding: 0.7em;
+  border-radius: 5px;
+  border-width: 0;
+}
+
+.site-button--outline {
+  background: transparent;
+  color: black;
+  border: 2px solid coral;
+}
+
+.site-button:focus,
+.site-button--outline:focus {
+  box-sizing: border-box;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
 @media screen and (max-width: 320px) {
   .app-header--menu > .menu-container:not(.hide) {
+    z-index: 1;
     background: darkblue;
     flex-direction: column;
     align-items: center;
@@ -61,9 +85,18 @@
     color: white;
   }
 
+  .menu-container a {
+    width: 100%;
+  }
+
   .menu-container li {
+    width: 100%;
     text-align: center;
     padding: 1em 0;
     margin: 0;
+  }
+
+  .menu-container li:hover {
+    background: darkgrey;
   }
 }

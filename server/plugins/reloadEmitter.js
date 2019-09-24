@@ -19,8 +19,8 @@ class ReloadEmitter {
   _onConnection(socket) {
     this._hasConnects = true
     this._connectedSocket = socket
-    console.log("[DEV] socket connected")
     fileWatcher._watch()
+    this._report("[DEV] socket connected, watching files for reload.")
   }
 
   _serveEmitter() {
@@ -29,9 +29,12 @@ class ReloadEmitter {
 
   _pushReload() {
     if (this._connectedSocket) {
-      console.log("[HR] Reload Triggered")
       this._connectedSocket.emit("save")
     }
+  }
+
+  _report(message, level = "log") {
+    console[level](message)
   }
 }
 

@@ -1,0 +1,57 @@
+<main class="container">
+  <div class="row">
+    <div class="col-md-8 col-lg-6 mx-auto mt-5">
+      <form method="POST" id="login-form" class="site-form">
+        <h2 class="form-title mb-4">Login to your account</h2>
+        <div class="input-container">
+          <label for="munchdrop-email" class="input-label">E-mail</label>
+          <input type="email" name="email" id="munchdrop-email">
+        </div>
+        <div class="input-container">
+          <label for="munchdrop-password" class="input-label">Password</label>
+          <input type="password" name="password" id="munchdrop-password">
+        </div>
+        <div class="input-container--submit mt-4">
+          <input value="Login" type="submit" class="site-button">
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<style>
+.site-form {
+  padding:2em;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+.form-title {
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  margin-bottom: 1em;
+}
+
+.input-container > input {
+  padding: 0.3em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.input-container--submit > input {
+  min-width: 100px;
+}
+
+.input-container > input:focus,
+.input-container--submit > input:focus {
+  box-sizing: border-box;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+</style>

@@ -38,8 +38,6 @@ class FileWatcher {
       this._getFilesSync()
     }
 
-    console.log("[DEV] watching files for reload...")
-
     setInterval(() => {
       this._currentFileSizes = this._filesToWatch.map(file => {
         let { size } = fs.statSync(file)
