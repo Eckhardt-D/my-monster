@@ -11,6 +11,7 @@
   <body>
     <%- include('partials/header.ejs', { meta }) %>
     <%- body %>
+    <% if (process.env.NODE_ENV !== 'development') { %>
     <script src="/public/scripts/socket.io.js"></script>
     <script>
       if(io) {
@@ -22,6 +23,7 @@
         } catch {}
       }
       </script>
+    <% } %>
     <script type="module" src="/public/lib/index.js"></script>
   </body>
 </html>
