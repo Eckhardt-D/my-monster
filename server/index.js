@@ -13,13 +13,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(require("./middleware/injectMeta"))
 
-app.get("/", (req, res) => {
-  res.render("index")
-})
-
 app.listen(PORT, () =>
   console.log(`
-  Application serving on http://localhost:${PORT}
+  Client application serving on http://localhost:${PORT}
           ctrl + c to quit application
-`)
+  `)
 )

@@ -1,0 +1,28 @@
+<header class="app-header app-header--<%= meta.DEFAULT_LAYOUT_CLASS %>">
+  <p class="app-title">MunchDrop</p>
+  <div class="app-header--menu">
+    <button class="menu-toggler--mobile">Menu</button>
+    <ul class="menu-container hide">
+      <a
+      href="/"
+      <% if(meta.currentRoute === '/') { %>
+          class="active"
+        <% } %> >
+        <li class="menu-link">Home</li></a>
+      <a
+        href="/about"
+        <% if(meta.currentRoute === '/about') { %>
+          class="active"
+        <% } %> >
+        <li class="menu-link">About</li>
+      </a>
+      <a
+      href="/login"
+      <% if(meta.currentRoute === '/login') { %>
+         class="active"
+        <% } %> >
+        <li class="menu-link">Login</li>
+      </a>
+    </ul>
+  </div>
+</header>

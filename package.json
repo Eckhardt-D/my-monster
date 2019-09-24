@@ -2,16 +2,23 @@
   "name": "ecks-drive",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node ."
+    "serve": "concurrently \"node ./api\" \"node ./server\"",
+    "serve:client": "node ./server",
+    "serve:api": "node ./api",
+    "dev": "concurrently \"nodemon ./api\" \"nodemon ./server\"",
+    "dev:client": "nodemon ./server",
+    "dev:api": "nodemon ./api"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^4.1.2",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "nodemon": "^1.19.2"
   }
 }

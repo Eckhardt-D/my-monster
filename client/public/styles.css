@@ -1,3 +1,5 @@
+@import url(./css/bootstrap-grid.min.css);
+
 .app-header {
   height: 60px;
   background: darkblue;
@@ -15,8 +17,10 @@
 }
 
 .app-header--menu > .menu-container {
+  margin: 0;
   display: flex;
   list-style: none;
+  padding: 0;
 }
 
 .app-header--menu > .menu-toggler--mobile {
@@ -24,7 +28,11 @@
 }
 
 .menu-link {
-  margin: 0 5px;
+  margin: 0 7px;
+}
+
+.menu-container > a.active {
+  font-weight: bolder;
 }
 
 @media screen and (max-width: 320px) {
@@ -47,8 +55,9 @@
   .app-header--menu > .menu-toggler--mobile {
     display: block;
     border: 2px solid white;
+    box-sizing: content-box;
     background: transparent;
-    padding: 0.5em 1em 0.6em 1em;
+    padding: 0.3em 0.8em 0.4em 0.8em;
     color: white;
   }
 
