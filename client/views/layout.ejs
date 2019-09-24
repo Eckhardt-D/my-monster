@@ -11,17 +11,17 @@
   <body>
     <%- include('partials/header.ejs', { meta }) %>
     <%- body %>
-    <% if (process.env.NODE_ENV !== 'development') { %>
-    <script src="/public/scripts/socket.io.js"></script>
-    <script>
-      if(io) {
-        try {
-          let socket = io('http://localhost:9000')
-          socket.on('save', () => {
-          location.reload()
-        })
-        } catch {}
-      }
+    <% if (process.env.NODE_ENV === 'development') { %>
+      <script src="/public/scripts/socket.io.js"></script>
+      <script>
+        if(io) {
+          try {
+            let socket = io('http://localhost:9000')
+            socket.on('save', () => {
+            location.reload()
+          })
+          } catch {}
+        }
       </script>
     <% } %>
     <script type="module" src="/public/lib/index.js"></script>
