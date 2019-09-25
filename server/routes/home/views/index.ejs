@@ -1,5 +1,5 @@
+<script src="/public/home.index.js"></script>
 <main class="container-fluid">
-
   <div class="row jumbotron-background">
     <div class="col-12 mx-auto">
         <div class="site-jumbotron mx-auto">
@@ -11,30 +11,25 @@
         </div>
     </div>
   </div>
-
   <div class="row site-info py-3">
-
-    <% for(card of state.cards) { %>
-    <div class="col-sm-6 col-lg-4 my-3 mx-auto">
-      <div class="info-card">
-        <div class="card-title">
-          <h5><%= card.title %></h5>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            <%= card.text %>
-          </p>
-          <div class="card-actions">
-            <button 
-              to="/about"
-              class="site-button--outline"
-            >Learn More</button>
+      <div class="col-sm-6 col-lg-4 my-3 mx-auto">
+        <div class="info-card">
+          <div class="card-title">
+            <h5>Hello world</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              My cool card
+            </p>
+            <div class="card-actions">
+              <button 
+                to="/about"
+                class="site-button--outline"
+              >Learn More</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% } %>
-
   </div>
 </main>
 

@@ -3,6 +3,7 @@ const server = require("http").Server(app)
 const io = require("socket.io")(server)
 
 const { fileWatcher } = require("./fileWatcher.js")
+let hasNotified = false
 
 class ReloadEmitter {
   constructor(emitter) {
@@ -20,11 +21,13 @@ class ReloadEmitter {
     this._hasConnects = true
     this._connectedSocket = socket
     fileWatcher._watch()
-    this._report("[DEV] socket connected, watching files for reload.")
+    if (!hasNotified)
+      this._report("[DEV] socket connected, watching files for reload.")
+    hasNotified = true
   }
 
   _serveEmitter() {
-    server.listen(9000)
+    if (process.env.NODE_ENV !== "devlopment") return server.listen(9000)
   }
 
   _pushReload() {

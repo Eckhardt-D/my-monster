@@ -1,7 +1,7 @@
 const { join } = require("path")
 const glob = require("glob")
 const fs = require("fs")
-const directoryToWatch = join(__dirname, "../../client")
+const directoryToWatch = join(__dirname, "../routes")
 
 class FileWatcher {
   constructor(startDirectory) {

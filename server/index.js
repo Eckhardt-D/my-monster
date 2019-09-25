@@ -1,40 +1,44 @@
+const { join } = require("path")
 const { reloadEmitter } = require("./plugins/reloadEmitter")
 const { fileWatcher } = require("./plugins/fileWatcher")
+
 const expressLayouts = require("express-ejs-layouts")
-const PORT = process.env.PORT || 1234
+const setDynamicViews = require("./middleware/setDynamicViews")
+const setDynamicPublic = require("./middleware/setDynamicPublic")
+const injectMeta = require("./middleware/injectMeta")
+
 const express = require("express")
-const { join } = require("path")
 const app = express()
 
 /*
- * Setting of views, view engine and static folder to be served
+ * Setting of view engine
  */
-app.use("/public", express.static(join(__dirname, "../client/public")))
-app.set("views", join(__dirname, "../client/views"))
-app.set("view engine", "ejs")
 app.use(expressLayouts)
+app.set("view engine", "ejs")
+app.set("layout", join(__dirname, "all-views/layout"))
 
 /*
  * Adding middlewares
  */
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(require("./middleware/injectMeta"))
-app.use(require("./middleware/injectStaticState"))
+app.use("/public", express.static(join(__dirname, "static")))
+app.use(setDynamicPublic)
+app.use(setDynamicViews)
+app.use(injectMeta)
 
 /*
- * Handling different client routes
+ * Handling routes with baseRoute only
  */
-app.use("/", require("./routes/home"))
-app.use("/auth", require("./routes/auth"))
+app.use("/", require("./routes/home/home.routes")("/"))
+app.use("/auth", require("./routes/auth/auth.routes")("/auth"))
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 1234, () => {
   console.log(`
-  Client application serving on http://localhost:${PORT}
-          ctrl + c to quit application
-  `)
-  if (process.env.NODE_ENV === "development") {
-    reloadEmitter._serveEmitter()
-    fileWatcher._feedEmitter(reloadEmitter)
-  }
+    Client server running on http://loclhost:1234
+                ctrl + c to quit
+    `)
+
+  reloadEmitter._serveEmitter()
+  fileWatcher._feedEmitter(reloadEmitter)
 })
